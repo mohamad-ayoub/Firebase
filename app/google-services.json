@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "467804436441",
+    "project_id": "myfirstproject-cbfe4",
+    "storage_bucket": "myfirstproject-cbfe4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:467804436441:android:17276b3b4d890b479ecbc8",
+        "android_client_info": {
+          "package_name": "com.example.myfirbaseauthenticationproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "467804436441-1sglckkh63achlv1m1pprtnja38iueca.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvyjiZpT3nybEzTMuileAzT-trVYcNob8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "467804436441-1sglckkh63achlv1m1pprtnja38iueca.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
