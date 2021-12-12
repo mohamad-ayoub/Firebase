@@ -45,7 +45,7 @@ public class MainActivity2 extends AppCompatActivity {
             loginUser();
 
         } else {
-            Log.d(TAG, "onCreate: valid user is connected");
+            Log.d(TAG, "onCreate: valid user is connected" + auth.getCurrentUser().getDisplayName());
             gotoOtherActivity();
             //auth.signOut();
         }

@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/mohamad/AndroidStudioProjects/MyFirbaseAuthenticationProject/app/src/main/res/drawable-v24/outline_add_photo_alternate_24.xml" value="0.14322916666666666" />
+        <entry key="..\:/Users/mohamad/AndroidStudioProjects/MyFirbaseAuthenticationProject/app/src/main/res/drawable/outline_send_24.xml" value="0.14322916666666666" />
+        <entry key="..\:/Users/mohamad/AndroidStudioProjects/MyFirbaseAuthenticationProject/app/src/main/res/drawable/outline_send_gray_24.xml" value="0.14322916666666666" />
+        <entry key="..\:/Users/mohamad/AndroidStudioProjects/MyFirbaseAuthenticationProject/app/src/main/res/drawable/rounded_message_gray.xml" value="0.14322916666666666" />
         <entry key="..\:/Users/mohamad/AndroidStudioProjects/MyFirbaseAuthenticationProject/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/mohamad/AndroidStudioProjects/MyFirbaseAuthenticationProject/app/src/main/res/layout/activity_main2.xml" value="0.12708333333333333" />
         <entry key="..\:/Users/mohamad/AndroidStudioProjects/MyFirbaseAuthenticationProject/app/src/main/res/layout/activity_other.xml" value="0.12708333333333333" />

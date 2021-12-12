@@ -39,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
             Log.d(TAG, "onCreate: No valid user");
         } else {
             Log.d(TAG, "onCreate: valid user is connected");
-            //gotoOtherActivity();
-            auth.signOut();
+            gotoOtherActivity();
+            //auth.signOut();
         }
     }
 
