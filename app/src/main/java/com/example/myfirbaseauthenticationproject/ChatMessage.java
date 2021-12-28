@@ -3,18 +3,23 @@ package com.example.myfirbaseauthenticationproject;
 import java.util.Date;
 
 public class ChatMessage {
-    private Date date;
+    //private Date date;
     private String userId;
     private String name;
     private String text;
 
+
+    public ChatMessage() {
+    }
+
     public ChatMessage(Date date, String userId, String name, String text) {
-        this.date = date;
+        //this.date = date;
         this.userId = userId;
         this.name = name;
         this.text = text;
     }
 
+    /*
     public Date getDate() {
         return date;
     }
@@ -22,7 +27,7 @@ public class ChatMessage {
     public void setDate(Date date) {
         this.date = date;
     }
-
+*/
     public String getUserId() {
         return userId;
     }

@@ -16,7 +16,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.OAuthCredential;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = "MainActivity";
@@ -39,9 +41,38 @@ public class MainActivity extends AppCompatActivity {
             Log.d(TAG, "onCreate: No valid user");
         } else {
             Log.d(TAG, "onCreate: valid user is connected");
-            gotoOtherActivity();
-            //auth.signOut();
+            if (auth.getCurrentUser().getDisplayName().length()>0) {
+                gotoOtherActivity();
+                //auth.signOut();
+            } else {
+                finish();
+                updateUserDisplayName("user");
+            }
         }
+    }
+
+    private void updateUserDisplayName(String displayName) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                .setDisplayName(displayName)
+                //.setPhotoUri(Uri.parse("https://example.com/jane-q-user/profile.jpg"))
+                .build();
+
+        user.updateProfile(profileUpdates)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "User profile updated.");
+                            gotoOtherActivity();
+                        } else
+                        {
+                            Toast.makeText(MainActivity.this, "Faild to update Display name", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                });
     }
 
     private void gotoOtherActivity() {

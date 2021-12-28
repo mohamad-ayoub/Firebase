@@ -3,6 +3,7 @@ package com.example.myfirbaseauthenticationproject;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +16,8 @@ import android.widget.Toast;
 
 import com.example.myfirbaseauthenticationproject.databinding.ActivityMainBinding;
 import com.example.myfirbaseauthenticationproject.databinding.ActivityOtherBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -24,19 +27,23 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
 public class OtherActivity extends AppCompatActivity {
     private ActivityOtherBinding binding;
-    DatabaseReference messagesRef=FirebaseDatabase.getInstance().getReference("Messages");
+    DatabaseReference messagesRef = FirebaseDatabase.getInstance().getReference("Messages");
     private ValueEventListener listener;
+    private ArrayList<ChatMessage> data = new ArrayList<ChatMessage>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityOtherBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        binding.messageRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         binding.messageEditText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -68,6 +75,8 @@ public class OtherActivity extends AppCompatActivity {
                 binding.messageEditText.setText("");
             }
         });
+
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user == null) {
             gotoMainActivity();
@@ -79,17 +88,19 @@ public class OtherActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Log.d("OtherActivity", "onDataChange: count=" + snapshot.getChildrenCount());
-                MyAdapter adapter = new MyAdapter(snapshot);
-                        binding.messageRecyclerView.setAdapter(adapter);
+                data.clear();
+                for (DataSnapshot MessagedataSnapshot: snapshot.getChildren()) {
+                        data.add(MessagedataSnapshot.getValue(ChatMessage.class));
+                }
+
+                MyAdapter adapter = new MyAdapter(data);
+                binding.messageRecyclerView.setAdapter(adapter);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         };
-
-
     }
 
     private void gotoMainActivity() {
@@ -127,6 +138,6 @@ public class OtherActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        binding=null;
+        binding = null;
     }
 }
